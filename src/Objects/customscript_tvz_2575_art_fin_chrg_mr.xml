@@ -1,0 +1,53 @@
+<mapreducescript scriptid="customscript_tvz_2575_art_fin_chrg_mr">
+  <description>MDIMKOV - this map reduce script, running on a scheduled basis:&#xd;
+- identifies configuration records in the [customrecord_tvz_2575_art_config] record type to be processed&#xd;
+- identifies the saved search selected on each of the configuration records, which is used for invoice creation&#xd;
+- creates invoices (one per customer) based on these saved searches&#xd;
+- each invoice holds lines for finance charges (based on days delayed and a collection fee)&#xd;
+- additionally, an automatic email is being sent to the customer to inform them</description>
+  <isinactive>F</isinactive>
+  <name>ART| TVZ Finance Charge MR</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/_tvz_2575_Vitec_Fin_Charges/tvz_2575_art_fin_chrg_mr.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_tvz_2575_art_fin_chrg_mr_mn">
+      <buffersize>1</buffersize>
+      <concurrencylimit>1</concurrencylimit>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <queueallstagesatonce>T</queueallstagesatonce>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>NOTSCHEDULED</status>
+      <title>ART| TVZ Finance Charge MR Manual</title>
+      <yieldaftermins>60</yieldaftermins>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2026-03-20</startdate>
+          <starttime>18:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+    <scriptdeployment scriptid="customdeploy_tvz_2575_art_fin_chrg_mr_dl">
+      <buffersize>1</buffersize>
+      <concurrencylimit>1</concurrencylimit>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <queueallstagesatonce>T</queueallstagesatonce>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>NOTSCHEDULED</status>
+      <title>ART| TVZ Finance Charge MR Daily</title>
+      <yieldaftermins>60</yieldaftermins>
+      <recurrence>
+        <daily>
+          <everyxdays>1</everyxdays>
+          <repeat></repeat>
+          <startdate>2026-03-18</startdate>
+          <starttime>12:00:00Z</starttime>
+        </daily>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</mapreducescript>
