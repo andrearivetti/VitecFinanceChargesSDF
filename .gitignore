@@ -42,3 +42,6 @@ Thumbs.db
 # NetSuite client credentials
 NS_CL_Config.JSON
 .nsclient-cache.json
+
+# migration failure logs
+tools/migration_failures_*.json
